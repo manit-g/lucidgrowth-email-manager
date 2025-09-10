@@ -79,7 +79,7 @@ export class Email {
   @Prop()
   timeDelta?: number; // milliseconds between sent and received
 
-  @Prop()
+  @Prop({ type: Object })
   certificateDetails?: {
     issuer?: string;
     subject?: string;
