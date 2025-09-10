@@ -5,3 +5,9 @@
 
 [build.environment]
   NODE_VERSION = "18"
+
+# Disable the automatic Next.js plugin that causes issues
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    disable = true
