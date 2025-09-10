@@ -8,7 +8,7 @@ import {
   LogOut, 
   BarChart3, 
   Search, 
-  Sync,
+  RefreshCw,
   AlertCircle,
   CheckCircle,
   Clock,
@@ -82,7 +82,7 @@ export default function Dashboard() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'RUNNING':
-        return <Sync className="h-4 w-4 text-blue-500 animate-spin" />;
+        return <RefreshCw className="h-4 w-4 text-blue-500 animate-spin" />;
       case 'COMPLETED':
         return <CheckCircle className="h-4 w-4 text-green-500" />;
       case 'ERROR':
@@ -315,7 +315,7 @@ export default function Dashboard() {
 
               <button className="card p-6 text-left hover:shadow-lg transition-shadow">
                 <div className="flex items-center">
-                  <Sync className="h-6 w-6 text-green-600 mr-3" />
+                  <RefreshCw className="h-6 w-6 text-green-600 mr-3" />
                   <div>
                     <h3 className="font-medium text-gray-900">Sync All Accounts</h3>
                     <p className="text-sm text-gray-600">Start synchronization for all accounts</p>
