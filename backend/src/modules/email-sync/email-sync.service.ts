@@ -241,7 +241,7 @@ export class EmailSyncService {
           results.push({ accountId: account._id, success: true, data: result });
         } catch (error) {
           results.push({ 
-            accountId: account._id, 
+            accountId: (account as any)._id, 
             success: false, 
             error: error.message 
           });
@@ -287,7 +287,7 @@ export class EmailSyncService {
 
       // Update sync status
       await this.syncStatusModel.findOneAndUpdate(
-        { accountId: account._id },
+        { accountId: (account as any)._id },
         {
           totalEmails: 0, // Will be updated as we discover emails
           processedEmails: 0,
@@ -303,7 +303,7 @@ export class EmailSyncService {
         try {
           // Update current folder
           await this.syncStatusModel.findOneAndUpdate(
-            { accountId: account._id },
+            { accountId: (account as any)._id },
             { currentFolder: folder },
           );
 
@@ -312,7 +312,7 @@ export class EmailSyncService {
           
           // Update total emails count
           await this.syncStatusModel.findOneAndUpdate(
-            { accountId: account._id },
+            { accountId: (account as any)._id },
             { $inc: { totalEmails: emails.length } },
           );
 
@@ -328,7 +328,7 @@ export class EmailSyncService {
 
             // Update progress
             await this.syncStatusModel.findOneAndUpdate(
-              { accountId: account._id },
+              { accountId: (account as any)._id },
               {
                 $inc: {
                   processedEmails: processed.success,
@@ -340,7 +340,7 @@ export class EmailSyncService {
 
             // Update folder progress
             await this.syncStatusModel.findOneAndUpdate(
-              { accountId: account._id },
+              { accountId: (account as any)._id },
               {
                 $set: {
                   [`folderProgress.${folder}`]: {
@@ -367,7 +367,7 @@ export class EmailSyncService {
       // Mark sync as completed
       if (!isCancelled) {
         await this.syncStatusModel.findOneAndUpdate(
-          { accountId: account._id },
+          { accountId: (account as any)._id },
           {
             status: 'COMPLETED',
             completedAt: new Date(),
@@ -377,7 +377,7 @@ export class EmailSyncService {
         );
 
         // Update account sync timestamp
-        await this.emailAccountModel.findByIdAndUpdate(account._id, {
+        await this.emailAccountModel.findByIdAndUpdate((account as any)._id, {
           lastSyncAt: new Date(),
           syncedEmails: totalProcessed,
         });
@@ -390,7 +390,7 @@ export class EmailSyncService {
       
       // Update sync status with error
       await this.syncStatusModel.findOneAndUpdate(
-        { accountId: account._id },
+        { accountId: (account as any)._id },
         {
           status: 'ERROR',
           errorMessage: error.message,
@@ -400,7 +400,7 @@ export class EmailSyncService {
 
       throw error;
     } finally {
-      this.syncJobs.delete(account._id.toString());
+      this.syncJobs.delete((account as any)._id.toString());
     }
   }
 
@@ -419,7 +419,7 @@ export class EmailSyncService {
       try {
         // Check if email already exists
         const existingEmail = await this.emailModel.findOne({
-          accountId: account._id,
+          accountId: (account as any)._id,
           messageId: emailData.messageId,
         });
 
@@ -435,7 +435,7 @@ export class EmailSyncService {
 
         // Create email document
         const email = new this.emailModel({
-          accountId: account._id,
+          accountId: (account as any)._id,
           messageId: emailData.messageId,
           subject: emailData.subject,
           from: emailData.from,

@@ -33,7 +33,7 @@ export class ImapService {
       }
     }
 
-    const config: Imap.Config = {
+    const config: any = {
       host: account.imapHost,
       port: account.imapPort,
       tls: account.useTLS,
@@ -130,8 +130,8 @@ export class ImapService {
           for (const [name, box] of Object.entries(boxList)) {
             const fullName = prefix + name;
             folders.push(fullName);
-            if (box.children) {
-              extractFolders(box.children, fullName + box.delimiter);
+            if ((box as any).children) {
+              extractFolders((box as any).children, fullName + (box as any).delimiter);
             }
           }
         };

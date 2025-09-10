@@ -33,7 +33,7 @@ export class EmailSyncController {
   @ApiResponse({ status: 400, description: 'Invalid input or sync already running' })
   async startSync(@Body() startSyncDto: StartSyncDto) {
     try {
-      const result = await this.emailSyncService.startSync(startSyncDto.accountId);
+      const result = await this.emailSyncService.startSync(startSyncDto);
       return {
         success: true,
         message: 'Email synchronization started successfully',
