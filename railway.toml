@@ -10,3 +10,6 @@ restartPolicyType = "on_failure"
 [[services]]
 name = "backend"
 source = "backend"
+
+[build.nixpacks]
+providers = ["nodejs"]
