@@ -43,7 +43,7 @@ export class SyncStatus {
   @Prop()
   errorMessage?: string;
 
-  @Prop({ default: {} })
+  @Prop({ type: Object, default: {} })
   folderProgress: Record<string, {
     total: number;
     processed: number;
