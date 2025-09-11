@@ -53,7 +53,7 @@ The Lucid Growth Email Manager is a comprehensive email management application t
 ### 🚀 Deployment & DevOps
 - **Simple Setup**: Easy installation with npm commands
 - **Environment Configuration**: Flexible environment variable management
-- **Cloud Deployment**: Ready for Netlify, Vercel, Railway, Render
+- **Cloud Deployment**: Ready for Vercel, Railway, Render
 - **Documentation**: Comprehensive API and deployment documentation
 
 ## 📊 Technical Specifications
@@ -139,7 +139,7 @@ The Lucid Growth Email Manager is a comprehensive email management application t
 
 1. **Local Development** (npm run dev)
 2. **Railway** (Backend deployment)
-3. **Netlify** (Frontend deployment)
+3. **Vercel** (Frontend deployment)
 4. **MongoDB Atlas** (Database hosting)
 
 ## 📚 Documentation
@@ -206,9 +206,9 @@ The application is fully functional and ready for deployment. You can:
    npm run dev
    ```
 
-2. **Deploy to Netlify** (as requested):
+2. **Deploy to Vercel** (as requested):
    - Connect the GitHub repository
-   - Set build command: `cd frontend && npm run build`
+   - Set root directory: `frontend`
    - Set environment variables
    - Deploy
 

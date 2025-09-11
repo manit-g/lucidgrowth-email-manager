@@ -2,7 +2,7 @@
 
 ## Overview
 
-Simple deployment guide for the Lucid Growth Email Manager using Railway (backend) and Netlify (frontend).
+Simple deployment guide for the Lucid Growth Email Manager using Railway (backend) and Vercel (frontend).
 
 ## Prerequisites
 
@@ -74,35 +74,36 @@ PORT = 3001
    - Wait for deployment to complete
    - Copy the URL (like: `https://lucidgrowth-backend.railway.app`)
 
-## Step 3: Deploy Frontend to Netlify
+## Step 3: Deploy Frontend to Vercel
 
-1. **Go to:** https://netlify.com
+1. **Go to:** https://vercel.com
 2. **Sign up** with GitHub
-3. **Create new site:**
-   - Click "New site from Git"
+3. **Create new project:**
+   - Click "New Project"
    - Choose GitHub
-   - Select your `lucidgrowth` repository
+   - Select your `lucidgrowth-email-manager` repository
 
 4. **Configure build settings:**
-   - **Base directory:** `frontend`
-   - **Build command:** `npm run build`
-   - **Publish directory:** `.next`
+   - **Framework Preset:** Next.js
+   - **Root Directory:** `frontend`
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `.next`
 
 5. **Add environment variable:**
-   - Go to Site Settings → Environment Variables
+   - Go to Project Settings → Environment Variables
    - Add:
 ```
 NEXT_PUBLIC_API_URL = https://lucidgrowth-backend.railway.app
 ```
 
 6. **Deploy:**
-   - Click "Deploy site"
+   - Click "Deploy"
    - Wait for deployment to complete
-   - You'll get a URL like: `https://amazing-name-123456.netlify.app`
+   - You'll get a URL like: `https://lucidgrowth-email-manager-frontend.vercel.app`
 
 ## Step 4: Test Your Deployment
 
-1. **Visit your Netlify URL**
+1. **Visit your Vercel URL**
 2. **Login with:** username: `admin`, password: `admin123`
 3. **Test the application**
 
@@ -110,7 +111,7 @@ NEXT_PUBLIC_API_URL = https://lucidgrowth-backend.railway.app
 
 You now have:
 - ✅ **GitHub Repository:** Your code
-- ✅ **Live Frontend URL:** Your Netlify URL
+- ✅ **Live Frontend URL:** Your Vercel URL
 - ✅ **Demo Video:** Record yourself using the app
 
 ## Troubleshooting
@@ -121,7 +122,7 @@ You now have:
 - Make sure MongoDB connection string is correct
 
 ### Frontend not connecting to backend?
-- Check `NEXT_PUBLIC_API_URL` in Netlify environment variables
+- Check `NEXT_PUBLIC_API_URL` in Vercel environment variables
 - Make sure backend URL is correct
 - Check browser console for errors
 
@@ -132,4 +133,4 @@ You now have:
 
 ## Support
 
-For issues, check the logs in Railway and Netlify dashboards.
+For issues, check the logs in Railway and Vercel dashboards.
